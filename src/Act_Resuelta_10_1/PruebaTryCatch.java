@@ -10,15 +10,17 @@ public class PruebaTryCatch {
     static Integer leerEntero() {
         Integer resultado;
         
-        while (true) {
+        Scanner sc = new Scanner(System.in);
+        
             try {
                 System.out.println("Introduce un numero entero: ");
-                resultado = new Scanner(System.in).nextInt();
-                break;
+                resultado = sc.nextInt();
+                sc.nextLine();
             } catch (InputMismatchException ex) {
                 System.out.println("Tipo erroneo");
+                resultado = leerEntero();
             }
-        }
+        
         
         return resultado;
     }
