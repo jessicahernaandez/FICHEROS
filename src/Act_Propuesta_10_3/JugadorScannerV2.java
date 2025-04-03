@@ -1,11 +1,12 @@
-/**/
+/*Prueba capturando los String con Arrays*/
 package Act_Propuesta_10_3;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class JugadoresScanner {
+public class JugadorScannerV2 {
 
     public static void main(String[] args) {
 
@@ -14,16 +15,17 @@ public class JugadoresScanner {
         int sumaEstatura = 0;
         int contEdad = 0;
         int contEstatura = 0;
+        String[] lineas = null;
 
         try {
             lectura = new BufferedReader(new FileReader("Jugadores.txt"));
             String linea = lectura.readLine();
 
             while (linea != null) {
-                Scanner sc = new Scanner(linea).useLocale(Locale.US); //Para que pueda leer '.' sin problema
-                if (sc.hasNext()) {
-                    String nombres = sc.next();
-                    System.out.println("Nombre: " + nombres);
+                Scanner sc = new Scanner(linea).useLocale(Locale.US);
+                if (sc.hasNext()) {                   
+                    lineas = sc.next().split(" ");
+                    System.out.println("Nombre: " + Arrays.toString(lineas));
                     int edad = sc.nextInt();
                     System.out.println("Edad : " + edad);
                     sumaEdad += edad;
@@ -33,7 +35,7 @@ public class JugadoresScanner {
                     sumaEstatura += estatura;
                     contEstatura++;
                 }
-
+                
                 linea = lectura.readLine();
             }
 
@@ -49,8 +51,7 @@ public class JugadoresScanner {
                 }
             }
         }
-       
-
+        
         System.out.println("Suma Edades: " + sumaEdad);
         double mediaEdades = (double) sumaEdad / contEdad;
         System.out.println("Media Edades: " + mediaEdades);
@@ -59,4 +60,5 @@ public class JugadoresScanner {
         double mediaEstatura = sumaEstatura / contEstatura;
         System.out.println("Media Estatura: " + mediaEstatura);
     }
+
 }
