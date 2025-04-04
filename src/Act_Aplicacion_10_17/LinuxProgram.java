@@ -12,6 +12,7 @@ public class LinuxProgram {
         
         BufferedReader lectura = null;  
         int contadorLineas = 0;
+        Scanner sc = new Scanner(System.in);
         
         try {
             lectura = new BufferedReader(new FileReader("SuperCola.java"));
@@ -19,16 +20,16 @@ public class LinuxProgram {
             
             
             while (linea != null) {
-                if (contadorLineas <= 24) {
                     System.out.println(linea);
-                    linea = lectura.readLine();
                     contadorLineas++;
-                } else {
-                    Scanner sc = new Scanner(System.in);
-                    System.out.println("Introduce una letra para continuar: ");
+               
+                    if (contadorLineas == 24) {
+                        System.out.println("Introduce una letra para continuar: ");
+                        sc.nextLine();
+                        contadorLineas = 0;
+                    }
+                
                     linea = lectura.readLine();
-                    contadorLineas = 0;
-                }
             }
              
 
@@ -47,6 +48,7 @@ public class LinuxProgram {
         }
         
         System.out.println("Fin de la lectura del archivo");
+        sc.close();
     }
     
 }
