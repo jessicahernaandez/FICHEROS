@@ -33,8 +33,6 @@ public class FicheroUsuarioV1 {
                 linea = lectura.readLine();
             }
             
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         } finally { //Cerrar fichero y scanner.

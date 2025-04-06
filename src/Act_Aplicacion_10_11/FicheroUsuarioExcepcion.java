@@ -19,15 +19,16 @@ public class FicheroUsuarioExcepcion {
             lectura = new BufferedReader (new FileReader(fichero));
             String linea = lectura.readLine();
             
+            if (fichero.isEmpty()) {
+                throw new SinEscrituraFichero();
+            }
+            
             while (linea != null) {
                 System.out.println(linea);
                 linea = lectura.readLine();
             }
             
-            if (fichero.isEmpty()) {
-                throw new SinEscrituraFichero();
-            }
-            
+                        
         } catch (SinEscrituraFichero ex) {
             System.out.println(ex);
         }  catch (FileNotFoundException ex) { 
